@@ -1,8 +1,8 @@
 import * as React from "react"
 import * as SwitchPrimitives from "@radix-ui/react-switch"
-// import { useEffect } from "react"
 
 import { cn } from "@/lib/utils"
+import { useEffect, useState } from "react";
 
 const ToggleDarkLightBtn = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
@@ -11,14 +11,20 @@ const ToggleDarkLightBtn = React.forwardRef<
   }
 >(({ className, label, ...props }, ref) => {
 
-  const [isChecked, setIsChecked] = React.useState(false);
+  const [isChecked, setIsChecked] = useState(() => {
+    const savedState = localStorage.getItem("darkMode");
+    return savedState === "true";
+  });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isChecked) {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
     }
+
+    localStorage.setItem("darkMode", isChecked.toString());
+
   }, [isChecked]);
 
   const handleToggle = (checked: boolean) => {
