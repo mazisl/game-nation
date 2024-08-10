@@ -2,6 +2,7 @@
 // import { useEffect, useState } from "react"
 
 import useGames from "@/hooks/useGames"
+import GameCard from "./GameCard";
 
 // interface Game {
 //   id: number;
@@ -28,14 +29,14 @@ const GameGrid = () => {
 
   return (
     <>
-      {error && <p>{error}</p>}      
-      <ul>
-        {games.map(game => {
-          return (
-            <li key={game.id}>{game.name}</li>
-          )
-        })}
-      </ul>
+      {error && <p>{error}</p>}
+      <div className="flex justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+          {games.map((game) => (
+            <GameCard key={game.id} game={game} />
+          ))}
+        </div>
+      </div>
     </>
   )
 }

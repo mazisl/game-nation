@@ -3,7 +3,7 @@ import NavBar from "./components/NavBar"
 
 function App() {
   return (
-    <div className="grid grid-rows-auto grid-cols-1 lg:grid-cols-2">
+    <div className="grid grid-rows-auto grid-cols-1 lg:grid-cols-[auto,auto] lg:grid-rows-[auto,auto]">
       <div className="row-span-1 col-span-1 lg:col-span-2">
         <NavBar />
       </div>
