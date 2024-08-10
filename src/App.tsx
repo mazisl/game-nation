@@ -1,3 +1,4 @@
+import GameGrid from "./components/GameGrid"
 import NavBar from "./components/NavBar"
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
         Aside
       </div>
       <div className="row-span-1 col-span-1">
-        Main
+        <GameGrid />
       </div>
     </div>
   )
