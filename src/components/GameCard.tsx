@@ -1,6 +1,7 @@
 import { Game } from "@/hooks/useGames";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
+import getCroppedImageUrl from "@/services/image-url";
 
 interface GameCardProps {
   game: Game;
@@ -11,7 +12,7 @@ const GameCard = ({game}: GameCardProps) => {
     <div className="border rounded-lg overflow-hidden shadow-lg w-80 h-80">
       <div
         className="h-3/5 bg-cover bg-center"
-        style={{ backgroundImage: `url(${game.background_image})` }}
+        style={{ backgroundImage: `url(${getCroppedImageUrl(game.background_image)})`}}
       ></div>
       <div className="h-2/5 p-4 bg-gray-800 text-white">
         <span className="text-lg font-semibold">{game.name}</span>
