@@ -9,7 +9,7 @@ interface GameCardProps {
 
 const GameCard = ({game}: GameCardProps) => {
   return (
-    <div className="border rounded-lg overflow-hidden shadow-lg w-80 h-80">
+    <>
       <div
         className="h-3/5 bg-cover bg-center"
         style={{ backgroundImage: `url(${getCroppedImageUrl(game.background_image)})`}}
@@ -22,7 +22,7 @@ const GameCard = ({game}: GameCardProps) => {
           <CriticScore score={game.metacritic} />
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
