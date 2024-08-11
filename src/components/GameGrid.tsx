@@ -27,7 +27,8 @@ const GameGrid = () => {
   //     .catch(err => setError(err.message))
   // })
 
-  const {games, error, isLoading} = useGames();
+  // const {games, error, isLoading} = useGames();
+  const {data, error, isLoading} = useGames();
 
   const skeletons = [1, 2, 3, 4, 5, 6];
 
@@ -41,7 +42,12 @@ const GameGrid = () => {
               <GameCardSkeleton key={skeleton} />
             </GameCardContainer>
           )))}
-          {games.map((game) => (
+          {/* {games.map((game) => (
+            <GameCardContainer>
+              <GameCard key={game.id} game={game} />
+            </GameCardContainer>
+          ))} */}
+          {data.map((game) => (
             <GameCardContainer>
               <GameCard key={game.id} game={game} />
             </GameCardContainer>
@@ -52,4 +58,4 @@ const GameGrid = () => {
   )
 }
 
-export default GameGrid
+export default GameGrid;
