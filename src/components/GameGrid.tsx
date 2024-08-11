@@ -3,6 +3,7 @@
 
 import useGames from "@/hooks/useGames"
 import GameCard from "./GameCard";
+import GameCardSkeleton from "./GameCardSkeleton";
 
 // interface Game {
 //   id: number;
@@ -25,13 +26,16 @@ const GameGrid = () => {
   //     .catch(err => setError(err.message))
   // })
 
-  const {games, error} = useGames();
+  const {games, error, isLoading} = useGames();
+
+  const skeletons = [1, 2, 3, 4, 5, 6];
 
   return (
     <>
       {error && <p>{error}</p>}
       <div className="flex justify-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+          {isLoading && skeletons.map((skeleton => <GameCardSkeleton key={skeleton} />))}
           {games.map((game) => (
             <GameCard key={game.id} game={game} />
           ))}
