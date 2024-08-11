@@ -1,4 +1,5 @@
 import GameGrid from "./components/GameGrid"
+import GenreList from "./components/GenreList"
 import NavBar from "./components/NavBar"
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
         <NavBar />
       </div>
       <div className="hidden lg:block lg:row-span-1 lg:col-span-1">
-        Aside
+        <GenreList />
       </div>
       <div className="row-span-1 col-span-1">
         <GameGrid />
