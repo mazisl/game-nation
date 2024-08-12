@@ -5,10 +5,12 @@ import NavBar from "./components/NavBar"
 import { Genre } from "./hooks/useGenres"
 import PlatformSelector from "./components/PlatformSelector"
 import { Platform } from "./hooks/useGames"
+import SortSelector from "./components/SortSelector"
 
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
+  sortOrder: string;
 }
 
 function App() {
@@ -45,7 +47,12 @@ function App() {
           <GenreList onSelectGenre={(genre) => setGameQuery({...gameQuery, genre})} selectedGenreText={gameQuery.genre}/>
         </div>
         <div className="row-span-1 col-span-1">
-          <PlatformSelector onSelectPlatform={(platform) => setGameQuery({...gameQuery, platform})} selectedPlatform={gameQuery.platform} />
+          <div className="flex">
+            <div className="mr-6">
+              <PlatformSelector onSelectPlatform={(platform) => setGameQuery({...gameQuery, platform})} selectedPlatform={gameQuery.platform} />
+            </div>
+            <SortSelector onSelectSortOrder={(sortOrder) => setGameQuery({...gameQuery, sortOrder})} />
+          </div>
           <GameGrid gameQuery={gameQuery} />
         </div>
       </div>
