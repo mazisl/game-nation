@@ -1,21 +1,38 @@
 import usePlatforms from "@/hooks/usePlatforms";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import { Platform } from "@/hooks/useGames";
 
-const PlatformSelector = () => {
+interface PlatformSelectorProps {
+  onSelectPlatform: (platform: Platform) => void;
+  selectedPlatform: Platform | null;
+}
+
+const PlatformSelector = ({onSelectPlatform, selectedPlatform}: PlatformSelectorProps) => {
 
   const {data, error} = usePlatforms();
 
   if (error) return null;
 
   return (    
-    <Select>
+    <Select 
+        value={selectedPlatform?.name} 
+        onValueChange={(value) => {
+        const newPlatformSelected = data.find(platform => platform.name === value);
+        if (newPlatformSelected) {
+          onSelectPlatform(newPlatformSelected);
+        }
+      }}>
       <SelectTrigger className="w-[180px] bg-gray-600">
         <SelectValue placeholder="Platforms" />
       </SelectTrigger>
       <SelectContent className="w-64 border-2">
         <SelectGroup>
           {/* <SelectLabel>Fruits</SelectLabel> */}
-          {data.map(platform => <SelectItem key={platform.id} value={platform.name}>{platform.name}</SelectItem>)}
+          {data.map(platform => (
+            <SelectItem key={platform.id} value={platform.name}>
+              {platform.name}
+            </SelectItem>
+          ))}
         </SelectGroup>
       </SelectContent>
     </Select>

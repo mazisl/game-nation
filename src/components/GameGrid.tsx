@@ -1,7 +1,7 @@
 // import apiClient from "@/services/api-client";
 // import { useEffect, useState } from "react"
 
-import useGames from "@/hooks/useGames"
+import useGames, { Platform } from "@/hooks/useGames"
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
@@ -19,9 +19,10 @@ import { Genre } from "@/hooks/useGenres";
 
 interface GameGridProps {
   selectedGenre: Genre | null;
+  selectedPlatform: Platform | null;
 }
 
-const GameGrid = ({selectedGenre}: GameGridProps) => {
+const GameGrid = ({selectedGenre, selectedPlatform}: GameGridProps) => {
 
   // const [games, setGames] = useState<Game[]>([]);
   // const [error, setError] = useState('');
@@ -33,7 +34,7 @@ const GameGrid = ({selectedGenre}: GameGridProps) => {
   // })
 
   // const {games, error, isLoading} = useGames();
-  const {data, error, isLoading} = useGames(selectedGenre);
+  const {data, error, isLoading} = useGames(selectedGenre, selectedPlatform);
 
   const skeletons = [1, 2, 3, 4, 5, 6];
 

@@ -4,10 +4,12 @@ import GenreList from "./components/GenreList"
 import NavBar from "./components/NavBar"
 import { Genre } from "./hooks/useGenres"
 import PlatformSelector from "./components/PlatformSelector"
+import { Platform } from "./hooks/useGames"
 
 function App() {
 
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
 
   return (
     <>
@@ -19,8 +21,8 @@ function App() {
           <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} selectedGenreText={selectedGenre}/>
         </div>
         <div className="row-span-1 col-span-1">
-          <PlatformSelector />
-          <GameGrid selectedGenre={selectedGenre} />
+          <PlatformSelector onSelectPlatform={(platform) => setSelectedPlatform(platform)} selectedPlatform={selectedPlatform} />
+          <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} />
         </div>
       </div>
     </>
