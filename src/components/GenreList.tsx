@@ -1,11 +1,17 @@
-import useGenres from "@/hooks/useGenres";
+import useGenres, { Genre } from "@/hooks/useGenres";
 import getCroppedImageUrl from "@/services/image-url";
 import GenreListSkeleton from "./GenreListSkeleton";
+
+import { Button } from "./ui/button";
 
 // import useData from "@/hooks/useData";
 // import {Genre} from "@/hooks/useGenres";
 
-const GenreList = () => {
+interface GenreListProps {
+  onSelectGenre: (genre: Genre) => void;
+}
+
+const GenreList = ({onSelectGenre}: GenreListProps) => {
 
   // const {genres} = useGenres();
   // return (
@@ -33,9 +39,9 @@ const GenreList = () => {
         ))
       )}
       {data.map(genre => (
-        <li key={genre.id} className="flex py-[5px]">
-          <img src={getCroppedImageUrl(genre.image_background)} className="h-8 w-8 rounded-lg mr-2" />
-          <p className="text-lg">{genre.name}</p>
+        <li key={genre.id} className="flex py-[5px] items-center">
+          <img src={getCroppedImageUrl(genre.image_background)} className="h-8 w-8 rounded-lg" />
+          <Button className="text-lg" variant='link' onClick={() => onSelectGenre(genre)}>{genre.name}</Button>
         </li>
       ))}
     </ul>

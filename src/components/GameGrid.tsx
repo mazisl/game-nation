@@ -5,6 +5,7 @@ import useGames from "@/hooks/useGames"
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
+import { Genre } from "@/hooks/useGenres";
 
 // interface Game {
 //   id: number;
@@ -16,7 +17,11 @@ import GameCardContainer from "./GameCardContainer";
 //   results: Game[];
 // }
 
-const GameGrid = () => {
+interface GameGridProps {
+  selectedGenre: Genre | null;
+}
+
+const GameGrid = ({selectedGenre}: GameGridProps) => {
 
   // const [games, setGames] = useState<Game[]>([]);
   // const [error, setError] = useState('');
@@ -28,7 +33,7 @@ const GameGrid = () => {
   // })
 
   // const {games, error, isLoading} = useGames();
-  const {data, error, isLoading} = useGames();
+  const {data, error, isLoading} = useGames(selectedGenre);
 
   const skeletons = [1, 2, 3, 4, 5, 6];
 
@@ -38,18 +43,18 @@ const GameGrid = () => {
       <div className="flex justify-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
           {isLoading && skeletons.map((skeleton => (
-            <GameCardContainer>
-              <GameCardSkeleton key={skeleton} />
+            <GameCardContainer key={skeleton}>
+              <GameCardSkeleton />
             </GameCardContainer>
           )))}
           {/* {games.map((game) => (
-            <GameCardContainer>
-              <GameCard key={game.id} game={game} />
+            <GameCardContainer key={game.id}>
+              <GameCard game={game} />
             </GameCardContainer>
           ))} */}
           {data.map((game) => (
-            <GameCardContainer>
-              <GameCard key={game.id} game={game} />
+            <GameCardContainer key={game.id}>
+              <GameCard game={game} />
             </GameCardContainer>
           ))}
         </div>
