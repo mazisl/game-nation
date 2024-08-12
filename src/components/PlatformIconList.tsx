@@ -33,7 +33,7 @@ const PlatformIconList = ({platforms}: PlatformIconsProps) => {
         const Icon = iconMap[platform.slug];
         return (
           <div key={platform.id} className="flex items-center justify-center">
-            {Icon ? <Icon className="text-lg text-gray-500" /> : <span>Icon not available</span>}
+            {Icon ? <Icon className="text-lg text-gray-500" /> : ''}
           </div>
         );
       })}
