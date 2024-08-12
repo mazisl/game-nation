@@ -1,11 +1,12 @@
 // import apiClient from "@/services/api-client";
 // import { useEffect, useState } from "react"
 
-import useGames, { Platform } from "@/hooks/useGames"
+import useGames from "@/hooks/useGames"
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
-import { Genre } from "@/hooks/useGenres";
+// import { Genre } from "@/hooks/useGenres";
+import { GameQuery } from "@/App";
 
 // interface Game {
 //   id: number;
@@ -17,12 +18,16 @@ import { Genre } from "@/hooks/useGenres";
 //   results: Game[];
 // }
 
+// interface GameGridProps {
+//   selectedGenre: Genre | null;
+//   selectedPlatform: Platform | null;
+// }
+
 interface GameGridProps {
-  selectedGenre: Genre | null;
-  selectedPlatform: Platform | null;
+  gameQuery: GameQuery;
 }
 
-const GameGrid = ({selectedGenre, selectedPlatform}: GameGridProps) => {
+const GameGrid = ({gameQuery}: GameGridProps) => {
 
   // const [games, setGames] = useState<Game[]>([]);
   // const [error, setError] = useState('');
@@ -34,7 +39,9 @@ const GameGrid = ({selectedGenre, selectedPlatform}: GameGridProps) => {
   // })
 
   // const {games, error, isLoading} = useGames();
-  const {data, error, isLoading} = useGames(selectedGenre, selectedPlatform);
+  // const {data, error, isLoading} = useGames(selectedGenre, selectedPlatform);
+  
+  const {data, error, isLoading} = useGames(gameQuery);
 
   const skeletons = [1, 2, 3, 4, 5, 6];
 
