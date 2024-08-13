@@ -15,12 +15,12 @@ const GameCard = ({game}: GameCardProps) => {
         style={{ backgroundImage: `url(${getCroppedImageUrl(game.background_image)})`}}
       ></div>
       <div className="h-2/5 p-4 bg-gray-800 text-white">
-        <span className="text-lg font-semibold">{game.name}</span>
         {/* {game.parent_platforms.map(({platform}) => <p key={platform.id}>{platform.name}</p>)} */}
-        <div className="flex justify-between">
+        <div className="flex justify-between mb-4">
           <PlatformIconList platforms={game.parent_platforms.map(p => p.platform)} />
           <CriticScore score={game.metacritic} />
         </div>
+        <span className="text-lg font-semibold">{game.name}</span>
       </div>
     </>
   )
