@@ -24,7 +24,6 @@ const ToggleThemeBtn = () => {
     } else {
       document.body.classList.remove('dark');
     }
-    // Save the theme preference to localStorage
     localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
   }, [isDarkMode]);
 
