@@ -6,6 +6,7 @@ import { Genre } from "./hooks/useGenres"
 import PlatformSelector from "./components/PlatformSelector"
 import { Platform } from "./hooks/useGames"
 import SortSelector from "./components/SortSelector"
+import GameHeading from "./components/GameHeading"
 
 export interface GameQuery {
   genre: Genre | null;
@@ -48,6 +49,7 @@ function App() {
           <GenreList onSelectGenre={(genre) => setGameQuery({...gameQuery, genre})} selectedGenreText={gameQuery.genre}/>
         </div>
         <div className="row-span-1 col-span-1">
+          <GameHeading gameQuery={gameQuery} />
           <div className="flex">
             <div className="mr-6">
               <PlatformSelector onSelectPlatform={(platform) => setGameQuery({...gameQuery, platform})} selectedPlatform={gameQuery.platform} />
