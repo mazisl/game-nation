@@ -50,7 +50,7 @@ const ToggleDarkLightBtn = React.forwardRef<
         />
       </SwitchPrimitives.Root>
       {label && (
-        <span className="ml-2 text-base tracking-tight">{label}</span>
+        <span className="ml-2 text-base tracking-tight whitespace-nowrap">{label}</span>
       )}
     </div>
   )
