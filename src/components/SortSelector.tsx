@@ -22,7 +22,7 @@ const SortSelector = ({onSelectSortOrder}: SortSelectorProps) => {
         onSelectSortOrder(newSortSelected.value);
       }
       }}>
-      <SelectTrigger className="w-[180px] bg-gray-600">
+      <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Sort selector" />
       </SelectTrigger>
       <SelectContent className="w-64 border-2">

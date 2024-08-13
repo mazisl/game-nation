@@ -41,7 +41,7 @@ function App() {
 
   return (
     <>
-      <div className="grid grid-rows-auto grid-cols-1 lg:grid-cols-[auto,auto] lg:grid-rows-[auto,auto]">
+      <div className="grid grid-cols-1 lg:grid-cols-[auto,auto] lg:grid-rows-[auto,auto]">
         <div className="row-span-1 col-span-1 lg:col-span-2">
           <NavBar onSearch={(searchText) => setGameQuery({...gameQuery, searchText})} />
         </div>
@@ -50,7 +50,7 @@ function App() {
         </div>
         <div className="row-span-1 col-span-1">
           <GameHeading gameQuery={gameQuery} />
-          <div className="flex">
+          <div className="flex max-lg:justify-center lg:pl-4">
             <div className="mr-6">
               <PlatformSelector onSelectPlatform={(platform) => setGameQuery({...gameQuery, platform})} selectedPlatform={gameQuery.platform} />
             </div>

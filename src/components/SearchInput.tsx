@@ -11,20 +11,21 @@ const SearchInput = ({onSearch}: SearchInputProps) => {
   const ref = useRef<HTMLInputElement>(null);
 
   return (
-    <form onSubmit={(e) => {
+    <form className="mx-4"
+      onSubmit={(e) => {
       e.preventDefault();
       if (ref.current) onSearch(ref.current.value);
     }}>
       <div className="relative flex items-center">
         <Search 
-          className="absolute left-3 text-gray-400" 
+          className="absolute left-3" 
           size={20} 
         />
         <Input 
           ref={ref}
           type="search" 
           placeholder="Search games..." 
-          className="pl-10 border-2 rounded-3xl bg-gray-800"
+          className="pl-10 border-[3px] rounded-3xl"
         />
       </div>
     </form>

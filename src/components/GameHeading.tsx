@@ -10,7 +10,7 @@ const GameHeading = ({gameQuery}: GameHeadingProps) => {
 
   return (
     <>
-      <h1 className="text-2xl font-bold my-2 mb-6">{heading}</h1>
+      <h1 className="text-4xl font-bold my-2 mb-6 max-lg:text-center lg:pl-4">{heading}</h1>
     </>
   )
 }

@@ -2,59 +2,26 @@ import * as React from "react"
 import * as SwitchPrimitives from "@radix-ui/react-switch"
 
 import { cn } from "@/lib/utils"
-import { useEffect, useState } from "react";
 
-const ToggleDarkLightBtn = React.forwardRef<
+const Switch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
-  React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root> & {
-    label?: string;
-  }
->(({ className, label, ...props }, ref) => {
-
-  const [isChecked, setIsChecked] = useState(() => {
-    const savedState = localStorage.getItem("darkMode");
-    return savedState === "true";
-  });
-
-  useEffect(() => {
-    if (isChecked) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-
-    localStorage.setItem("darkMode", isChecked.toString());
-
-  }, [isChecked]);
-
-  const handleToggle = (checked: boolean) => {
-    setIsChecked(checked);
-  };
-
-  return (
-    <div className="flex items-center space-x-2">  
-      <SwitchPrimitives.Root
-        className={cn(
-          "peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-green-300 data-[state=unchecked]:bg-input",
-          className
-        )}
-        {...props}
-        ref={ref}
-        checked={isChecked}
-        onCheckedChange={handleToggle}
-      >
-        <SwitchPrimitives.Thumb
-          className={cn(
-            "pointer-events-none block h-5 w-5 rounded-full bg-background shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0"
-          )}
-        />
-      </SwitchPrimitives.Root>
-      {label && (
-        <span className="ml-2 text-base tracking-tight whitespace-nowrap">{label}</span>
+  React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>
+>(({ className, ...props }, ref) => (
+  <SwitchPrimitives.Root
+    className={cn(
+      "peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-green-300 data-[state=unchecked]:bg-input",
+      className
+    )}
+    {...props}
+    ref={ref}
+  >
+    <SwitchPrimitives.Thumb
+      className={cn(
+        "pointer-events-none block h-5 w-5 rounded-full bg-background shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-5 data-[state=checked]:bg-white data-[state=unchecked]:translate-x-0"
       )}
-    </div>
-  )
-})
-ToggleDarkLightBtn.displayName = SwitchPrimitives.Root.displayName
+    />
+  </SwitchPrimitives.Root>
+))
+Switch.displayName = SwitchPrimitives.Root.displayName
 
-export { ToggleDarkLightBtn }
+export { Switch }

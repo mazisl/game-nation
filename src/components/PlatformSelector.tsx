@@ -22,7 +22,7 @@ const PlatformSelector = ({onSelectPlatform, selectedPlatform}: PlatformSelector
           onSelectPlatform(newPlatformSelected);
         }
       }}>
-      <SelectTrigger className="w-[180px] bg-gray-600">
+      <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Platforms" />
       </SelectTrigger>
       <SelectContent className="w-64 border-2">
