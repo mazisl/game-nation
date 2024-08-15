@@ -1,6 +1,6 @@
-import usePlatforms from "@/hooks/usePlatforms";
+import usePlatforms, {Platform} from "@/hooks/usePlatforms";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { Platform } from "@/hooks/useGames";
+// import { Platform } from "@/hooks/useGames";
 
 interface PlatformSelectorProps {
   onSelectPlatform: (platform: Platform) => void;
