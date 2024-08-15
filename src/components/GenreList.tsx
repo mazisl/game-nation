@@ -6,10 +6,10 @@ import { Button } from "./ui/button";
 
 interface GenreListProps {
   onSelectGenre: (genre: Genre) => void;
-  selectedGenreText: Genre | null;
+  selectedGenreId?: number;
 }
 
-const GenreList = ({onSelectGenre, selectedGenreText}: GenreListProps) => {
+const GenreList = ({onSelectGenre, selectedGenreId}: GenreListProps) => {
   const {data, isLoading, error} = useGenres();
 
   if (error) return null;
@@ -26,7 +26,7 @@ const GenreList = ({onSelectGenre, selectedGenreText}: GenreListProps) => {
           ))
         )}
         {data?.results.map(genre => {
-          const fontWeight = genre.id === selectedGenreText?.id ? 'font-bold' : 'font-normal';
+          const fontWeight = genre.id === selectedGenreId ? 'font-bold' : 'font-normal';
           return (
             <li key={genre.id} className="flex py-[5px] items-center">
               <img src={getCroppedImageUrl(genre.image_background)} className="h-8 w-8 rounded-lg object-cover" />
