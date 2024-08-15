@@ -8,6 +8,7 @@ import APIClient, {FetchResponse} from "@/services/api-client";
 // import { Genre } from "./useGenres";
 
 import { Platform } from "./usePlatforms";
+import ms from 'ms';
 
 const apiClient = new APIClient<Game>('/games');
 
@@ -70,7 +71,7 @@ const useGames = (gameQuery: GameQuery) =>
     queryFn: ({pageParam = 1}) => apiClient.getAll({
       params: {
         genres: gameQuery.genreId, 
-        Parent_platforms: gameQuery.platformId,
+        parent_platforms: gameQuery.platformId,
         ordering: gameQuery.sortOrder,
         search: gameQuery.searchText,
         page: pageParam
@@ -79,7 +80,7 @@ const useGames = (gameQuery: GameQuery) =>
     getNextPageParam: (lastPage, allPages) => {
       return lastPage.next ? allPages.length + 1 : undefined;
     },
-    staleTime: 24 * 60 * 60 * 1000 //24 hrs
+    staleTime: ms('24h') //24 hrs
   })
 
 
