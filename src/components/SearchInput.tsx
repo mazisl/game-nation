@@ -1,20 +1,18 @@
 import { useRef } from "react";
 import { Input } from "./ui/input";
 import { Search } from 'lucide-react';
+import useGameQueryStore from "@/store";
 
-interface SearchInputProps {
-  onSearch: (searchText: string) => void;
-}
-
-const SearchInput = ({onSearch}: SearchInputProps) => {
+const SearchInput = () => {
 
   const ref = useRef<HTMLInputElement>(null);
+  const setSearchText = useGameQueryStore(s => s.setSearchText);
 
   return (
     <form className="mx-4"
       onSubmit={(e) => {
       e.preventDefault();
-      if (ref.current) onSearch(ref.current.value);
+      if (ref.current) setSearchText(ref.current.value);
     }}>
       <div className="relative flex items-center">
         <Search 

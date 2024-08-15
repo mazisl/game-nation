@@ -1,17 +1,14 @@
-import usePlatforms, {Platform} from "@/hooks/usePlatforms";
+import usePlatforms from "@/hooks/usePlatforms";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import usePlatform from "@/hooks/usePlatform";
+import useGameQueryStore from "@/store";
 // import { Platform } from "@/hooks/useGames";
 
-interface PlatformSelectorProps {
-  onSelectPlatform: (platform: Platform) => void;
-  selectedPlatformId?: number;
-}
-
-const PlatformSelector = ({onSelectPlatform, selectedPlatformId}: PlatformSelectorProps) => {
+const PlatformSelector = () => {
 
   const {data, error} = usePlatforms();
-
+  const setSelectedPlatformId = useGameQueryStore(s => s.setPlatformId);
+  const selectedPlatformId = useGameQueryStore(s => s.gameQuery.platformId);
   const selectedPlatform = usePlatform(selectedPlatformId);
 
   if (error) return null;
@@ -22,7 +19,7 @@ const PlatformSelector = ({onSelectPlatform, selectedPlatformId}: PlatformSelect
         onValueChange={(value) => {
         const newPlatformSelected = data?.results.find(platform => platform.name === value);
         if (newPlatformSelected) {
-          onSelectPlatform(newPlatformSelected);
+          setSelectedPlatformId(newPlatformSelected.id);
         }
       }}>
       <SelectTrigger className="w-[180px]">

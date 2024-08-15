@@ -1,16 +1,14 @@
-import useGenres, { Genre } from "@/hooks/useGenres";
+import useGenres from "@/hooks/useGenres";
 import getCroppedImageUrl from "@/services/image-url";
 import GenreListSkeleton from "./GenreListSkeleton";
 
 import { Button } from "./ui/button";
+import useGameQueryStore from "@/store";
 
-interface GenreListProps {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenreId?: number;
-}
-
-const GenreList = ({onSelectGenre, selectedGenreId}: GenreListProps) => {
+const GenreList = () => {
   const {data, isLoading, error} = useGenres();
+  const selectedGenreId = useGameQueryStore(s => s.gameQuery.genreId);
+  const setSelectedGenreId = useGameQueryStore(s => s.setGenreId);
 
   if (error) return null;
   
@@ -30,7 +28,7 @@ const GenreList = ({onSelectGenre, selectedGenreId}: GenreListProps) => {
           return (
             <li key={genre.id} className="flex py-[5px] items-center">
               <img src={getCroppedImageUrl(genre.image_background)} className="h-8 w-8 rounded-lg object-cover" />
-              <Button className={`text-base ${fontWeight} whitespace-normal text-left`} variant='link' onClick={() => onSelectGenre(genre)}>{genre.name}</Button>
+              <Button className={`text-base ${fontWeight} whitespace-normal text-left`} variant='link' onClick={() => setSelectedGenreId(genre.id)}>{genre.name}</Button>
             </li>
           )
         })}

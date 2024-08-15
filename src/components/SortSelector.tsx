@@ -1,10 +1,7 @@
+import useGameQueryStore from "@/store";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 
-interface SortSelectorProps {
-  onSelectSortOrder: (sortOrder: string) => void;
-}
-
-const SortSelector = ({onSelectSortOrder}: SortSelectorProps) => {
+const SortSelector = () => {
 
   const sortOrders = [
     {value: 'relevance', label: 'Relevance'},
@@ -15,11 +12,14 @@ const SortSelector = ({onSelectSortOrder}: SortSelectorProps) => {
     {value: '-rating', label: 'Average rating'}
   ]
 
+  // const sortOrder = useGameQueryStore(s => s.gameQuery.sortOrder);
+  const setSortOrder = useGameQueryStore(s => s.setSortOrder);
+
   return ( 
     <Select onValueChange={(value) => {
       const newSortSelected = sortOrders.find(order => order.value === value);
       if (newSortSelected) {
-        onSelectSortOrder(newSortSelected.value);
+        setSortOrder(newSortSelected.value);
       }
       }}>
       <SelectTrigger className="w-[180px]">

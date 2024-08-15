@@ -1,43 +1,30 @@
-import { useState } from "react"
 import GameGrid from "./components/GameGrid"
 import GenreList from "./components/GenreList"
 import NavBar from "./components/NavBar"
-// import { Genre } from "./hooks/useGenres"
 import PlatformSelector from "./components/PlatformSelector"
-// import { Platform } from "./hooks/useGames"
-// import { Platform } from "./hooks/usePlatforms"
 import SortSelector from "./components/SortSelector"
 import GameHeading from "./components/GameHeading"
 
-export interface GameQuery {
-  genreId?: number;
-  platformId?: number;
-  sortOrder: string;
-  searchText: string;
-}
-
 function App() {
-
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-[auto,auto] lg:grid-rows-[auto,auto]">
         <div className="row-span-1 col-span-1 lg:col-span-2">
-          <NavBar onSearch={(searchText) => setGameQuery({...gameQuery, searchText})} />
+          <NavBar  />
         </div>
         <div className="hidden lg:block lg:row-span-1 lg:col-span-1 px-4 w-[200px]">
-          <GenreList onSelectGenre={(genre) => setGameQuery({...gameQuery, genreId: genre.id})} selectedGenreId={gameQuery.genreId}/>
+          <GenreList />
         </div>
         <div className="row-span-1 col-span-1">
-          <GameHeading gameQuery={gameQuery} />
+          <GameHeading />
           <div className="flex max-lg:justify-center lg:pl-4">
             <div className="mr-6">
-              <PlatformSelector onSelectPlatform={(platform) => setGameQuery({...gameQuery, platformId: platform.id})} selectedPlatformId={gameQuery.platformId} />
+              <PlatformSelector />
             </div>
-            <SortSelector onSelectSortOrder={(sortOrder) => setGameQuery({...gameQuery, sortOrder})} />
+            <SortSelector />
           </div>
-          <GameGrid gameQuery={gameQuery} />
+          <GameGrid />
         </div>
       </div>
     </>
