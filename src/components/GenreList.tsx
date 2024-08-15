@@ -4,28 +4,12 @@ import GenreListSkeleton from "./GenreListSkeleton";
 
 import { Button } from "./ui/button";
 
-// import useData from "@/hooks/useData";
-// import {Genre} from "@/hooks/useGenres";
-
 interface GenreListProps {
   onSelectGenre: (genre: Genre) => void;
   selectedGenreText: Genre | null;
 }
 
 const GenreList = ({onSelectGenre, selectedGenreText}: GenreListProps) => {
-
-  // const {genres} = useGenres();
-  // return (
-  //   <ul>
-  //     {genres.map((genre) => {
-  //       return (
-  //         <li key={genre.id}>{genre.name}</li>
-  //       )
-  //     })}
-  //   </ul>
-  // )
-
-  // const {data} = useData<Genre>('/genres');
   const {data, isLoading, error} = useGenres();
 
   if (error) return null;
@@ -41,7 +25,7 @@ const GenreList = ({onSelectGenre, selectedGenreText}: GenreListProps) => {
             <li key={skeleton} className="py-[5px]"><GenreListSkeleton /></li>
           ))
         )}
-        {data.map(genre => {
+        {data?.results.map(genre => {
           const fontWeight = genre.id === selectedGenreText?.id ? 'font-bold' : 'font-normal';
           return (
             <li key={genre.id} className="flex py-[5px] items-center">

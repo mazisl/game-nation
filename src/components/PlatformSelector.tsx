@@ -17,7 +17,7 @@ const PlatformSelector = ({onSelectPlatform, selectedPlatform}: PlatformSelector
     <Select 
         value={selectedPlatform?.name} 
         onValueChange={(value) => {
-        const newPlatformSelected = data.find(platform => platform.name === value);
+        const newPlatformSelected = data?.results.find(platform => platform.name === value);
         if (newPlatformSelected) {
           onSelectPlatform(newPlatformSelected);
         }
@@ -28,7 +28,7 @@ const PlatformSelector = ({onSelectPlatform, selectedPlatform}: PlatformSelector
       <SelectContent className="w-64 border-2">
         <SelectGroup>
           {/* <SelectLabel>Fruits</SelectLabel> */}
-          {data.map(platform => (
+          {data?.results.map(platform => (
             <SelectItem key={platform.id} value={platform.name}>
               {platform.name}
             </SelectItem>

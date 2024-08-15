@@ -1,7 +1,9 @@
-// import apiClient from "@/services/api-client";
-// import { CanceledError } from "axios";
-// import { useEffect, useState } from "react";
-import useData from "./useData";
+// import useData from "./useData";
+import genres from "@/data/genres";
+
+import { useQuery } from "@tanstack/react-query";
+import apiClient from "@/services/api-client";
+import { FetchResponse } from "@/services/api-client";
 
 export interface Genre {
   id: number;
@@ -9,38 +11,17 @@ export interface Genre {
   image_background: string;
 }
 
-// interface GenresFetchResponse {
-//   count: number;
-//   results: Genre[];
-// }
+// const useGenres = () => useData<Genre>('/genres');
 
-// const useGenres = () => {
-//   const [genres, setGenres] = useState<Genre[]>([]);
-//   const [error, setError] = useState('');
-//   const [isLoading, setIsLoading] = useState(false);
+//getting genre list from static data inside genres.ts
+// const useGenres = () => ({data: genres, isLoading: false, error: null})
 
-//   useEffect(() => {
-
-//     const controller = new AbortController();
-
-//     setIsLoading(true);
-//     apiClient.get<GenresFetchResponse>('/genres', {signal: controller.signal})
-//       .then(res => {
-//         setGenres(res.data.results)
-//         setIsLoading(false)
-//       })
-//       .catch(err => {
-//         if (err instanceof CanceledError) return;
-//         setError(err.message)
-//         setIsLoading(false)
-//       })
-
-//     return () => controller.abort();
-//   }, [])
-
-//   return {genres, error, isLoading};
-// }
-
-const useGenres = () => useData<Genre>('/genres');
+//using react query
+const useGenres = () => useQuery({
+  queryKey: ['genres'],
+  queryFn: () => apiClient.get<FetchResponse<Genre>>('/genres').then(res => res.data),
+  staleTime: 24 * 60 * 60 * 1000, //24 hours
+  initialData: {count: genres.length, results: genres}
+})
 
 export default useGenres;

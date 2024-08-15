@@ -17,26 +17,6 @@ export interface GameQuery {
 
 function App() {
 
-  // const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  // const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
-
-  // return (
-  //   <>
-  //     <div className="grid grid-rows-auto grid-cols-1 lg:grid-cols-[auto,auto] lg:grid-rows-[auto,auto]">
-  //       <div className="row-span-1 col-span-1 lg:col-span-2">
-  //         <NavBar />
-  //       </div>
-  //       <div className="hidden lg:block lg:row-span-1 lg:col-span-1 px-4 w-[200px]">
-  //         <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} selectedGenreText={selectedGenre}/>
-  //       </div>
-  //       <div className="row-span-1 col-span-1">
-  //         <PlatformSelector onSelectPlatform={(platform) => setSelectedPlatform(platform)} selectedPlatform={selectedPlatform} />
-  //         <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} />
-  //       </div>
-  //     </div>
-  //   </>
-  // )
-
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (
