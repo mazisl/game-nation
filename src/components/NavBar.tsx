@@ -4,7 +4,7 @@ import ToggleThemeBtn from './ToggleThemeBtn';
 
 const NavBar = () => {
   return (
-    <div className='flex items-center p-2.5'>
+    <div className='flex items-center p-2.5 lg:mb-8'>
       <img className='h-14' src={logo} />
       <SearchInput />
       <ToggleThemeBtn />
