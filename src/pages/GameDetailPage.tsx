@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import ExpandableText from "@/components/ExpandableText";
 import GameAttributes from "@/components/GameAttributes";
 import GameTrailer from "@/components/GameTrailer";
+import GameScreenshots from "@/components/GameScreenshots";
 
 //by appending a const with ! we tell ts that this will never be null
 const GameDetailPage = () => {
@@ -20,6 +21,7 @@ const GameDetailPage = () => {
       <ExpandableText>{game.description_raw}</ExpandableText>
       <GameAttributes game={game} />
       <GameTrailer gameId={game.id} />
+      <GameScreenshots gameId={game.id} />
     </>
   )
 }
