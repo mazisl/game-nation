@@ -68,4 +68,11 @@
   }
 }
 
+@layer components {
+  .hover {
+    transform: scale(1.03);
+    transition: transform 0.15s ease-in;
+  }
+}
+
 form {width: 100%}
