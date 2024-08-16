@@ -73,6 +73,16 @@
     transform: scale(1.03);
     transition: transform 0.15s ease-in;
   }
+
+  .loading-spinner {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 form {width: 100%}
