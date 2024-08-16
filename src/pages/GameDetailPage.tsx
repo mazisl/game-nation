@@ -3,6 +3,7 @@ import { FaSpinner } from "react-icons/fa";
 import { useParams } from "react-router-dom"
 import ExpandableText from "@/components/ExpandableText";
 import GameAttributes from "@/components/GameAttributes";
+import GameTrailer from "@/components/GameTrailer";
 
 //by appending a const with ! we tell ts that this will never be null
 const GameDetailPage = () => {
@@ -17,7 +18,8 @@ const GameDetailPage = () => {
     <>
       <h1 className="text-4xl font-bold">{game.name}</h1>
       <ExpandableText>{game.description_raw}</ExpandableText>
-      <GameAttributes game={game} />      
+      <GameAttributes game={game} />
+      <GameTrailer gameId={game.id} />
     </>
   )
 }
