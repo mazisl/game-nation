@@ -15,7 +15,9 @@ const GameCard = ({game}: GameCardProps) => {
       <div
         className="h-3/5 bg-cover bg-center"
         style={{ backgroundImage: `url(${getCroppedImageUrl(game.background_image)})`}}
-      ></div>
+      >        
+      </div>
+      
       <div className="h-2/5 p-4 bg-gray-800 text-white">
         {/* {game.parent_platforms.map(({platform}) => <p key={platform.id}>{platform.name}</p>)} */}
         <div className="flex justify-between mb-4">

@@ -16,4 +16,4 @@ const DefinitionItem = ({term, children}: DefItemProps) => {
   )
 }
 
-export default DefinitionItem
+export default DefinitionItem;

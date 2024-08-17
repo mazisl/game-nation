@@ -63,7 +63,7 @@ const useGames = () => {
     getNextPageParam: (lastPage, allPages) => {
       return lastPage.next ? allPages.length + 1 : undefined;
     },
-    staleTime: ms('24h') //24 hrs
+    staleTime: ms('24h')
   })
 }
 

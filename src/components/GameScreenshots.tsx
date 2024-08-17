@@ -12,7 +12,7 @@ const GameScreenshots = ({gameId}: GameScrProps) => {
   if (error) throw error;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+    <div className="grid md:grid-cols-2 gap-2">
       {data?.results.map(file => (
         <img key={file.id} src={file.image} />
       ))}
