@@ -20,7 +20,7 @@ const GameGrid = () => {
   return (
     <>
       {/* <InfiniteScroll dataLength={fetchedGamesCount} hasMore={!!hasNextPage} next={() => fetchNextPage()} loader={<Progress value={45} />}> */}
-        <div className="flex justify-center">
+        <div className="flex justify-center lg:justify-start">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
             {isLoading && skeletons.map((skeleton => (
               <GameCardContainer key={skeleton}>
